@@ -1,0 +1,26 @@
+{
+    // Add project folders 
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    // Machine specific settings that should be copied into the container
+    "settings": {
+        "terminal.integrated.defaultProfile.windows": "bash",
+        "terminal.integrated.defaultProfile.linux": "sh",
+        "files.associations": {}
+    },
+    // An array of extensions that should be installed into the container.
+    "extensions": {
+        "recommendations": [
+            "devsense.phptools-vscode",
+            "streetsidesoftware.code-spell-checker"
+        ]
+    },
+    // Lunch configurations
+    "launch": {
+        "version": "0.2.0",
+        "configurations": []
+    }
+}

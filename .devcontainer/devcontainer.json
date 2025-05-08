@@ -1,0 +1,62 @@
+{
+    // A name for the dev container displayed in the UI
+    "name": "Alpine Server (Apache, PHP, MariaDB)",
+    // Follow the commands of Dockerfile to create the container
+    "build": {
+        "dockerfile": "Dockerfile",
+        // @todo Write comment
+        "args": {
+            "IMAGE_NAME": "alpine",
+            "IMAGE_TAG": "latest"
+        }
+    },
+    // Set environment variables used inside the container
+    "containerEnv": {
+        "APACHE_HTTP_PORT": "80",
+        "APACHE_HTTPS_PORT": "443",
+        "DATABASE_ROOT_PASSWORD": "root-password"
+    },
+    // Expose Apache HTTP and HTTPS ports to the host machine
+    "forwardPorts": [
+        443,
+        80
+    ],
+    // Mount the local folder to /workspace folder of Docker image
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind",
+    // The path of workspace folder, which means that this folder will be opened after container is running
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    // Run a script after the container is created
+    "postCreateCommand": "chmod +x .devcontainer/createpoint.sh && .devcontainer/createpoint.sh",
+    // Run a script after the container is started
+    "postStartCommand": "chmod +x .devcontainer/startpoint.sh && .devcontainer/startpoint.sh",
+    // Define additional filesystem mounts for the container
+    "mounts": [
+        // Mount the VS Code extensions to the target path, and then they don't need to be installed again when rebuilding the container
+        "source=extensionCache,target=/root/.vscode-server/extensions,type=volume",
+        // Mount the local `www` folder to Apache's default web root directory
+        "source=${localWorkspaceFolder}/www,target=/var/www/localhost/htdocs,type=bind,consistency=cached"
+    ],
+    // Customize the development container environment
+    "customizations": {
+        "vscode": {
+            // Machine specific settings that should be copied into the container
+            "settings": {
+                // Use `sh` as the default integrated terminal
+                "terminal.integrated.defaultProfile.linux": "sh",
+                // Show a vertical ruler in the editor at 150 characters
+                "editor.rulers": [
+                    150
+                ]
+            },
+            // An array of extensions that should be installed into the container.
+            "extensions": [
+                "devsense.phptools-vscode",
+                "streetsidesoftware.code-spell-checker"
+            ]
+        }
+    },
+    // Start the container with privileged mode, otherwise the devices cannot be accessed on the Docker image.
+    "runArgs": [
+        "--privileged"
+    ]
+}

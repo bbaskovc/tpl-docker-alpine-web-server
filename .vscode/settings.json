@@ -1,0 +1,6 @@
+{ 
+    // Path to PHP executable in the container
+    "php.validate.executablePath": "/usr/bin/php82",
+    // Ensure this is correct for the Docker container
+    "php.executablePath": "/usr/bin/php82", 
+}
