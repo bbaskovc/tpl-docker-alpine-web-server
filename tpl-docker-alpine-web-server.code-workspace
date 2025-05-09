@@ -9,6 +9,8 @@
     "settings": {
         "terminal.integrated.defaultProfile.windows": "bash",
         "terminal.integrated.defaultProfile.linux": "sh",
+        "files.eol": "\n",
+        "files.autoGuessEncoding": true,
         "files.associations": {}
     },
     // An array of extensions that should be installed into the container.

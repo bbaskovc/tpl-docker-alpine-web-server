@@ -26,9 +26,9 @@
     // The path of workspace folder, which means that this folder will be opened after container is running
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
     // Run a script after the container is created
-    "postCreateCommand": "chmod +x .devcontainer/createpoint.sh && .devcontainer/createpoint.sh",
+    "postCreateCommand": "ls -al && chmod +x .devcontainer/createpoint.sh && .devcontainer/createpoint.sh",
     // Run a script after the container is started
-    "postStartCommand": "chmod +x .devcontainer/startpoint.sh && .devcontainer/startpoint.sh",
+    "postStartCommand": "ls -al && chmod +x .devcontainer/startpoint.sh && ./.devcontainer/startpoint.sh",
     // Define additional filesystem mounts for the container
     "mounts": [
         // Mount the VS Code extensions to the target path, and then they don't need to be installed again when rebuilding the container
