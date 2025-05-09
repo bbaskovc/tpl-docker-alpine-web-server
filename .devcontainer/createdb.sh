@@ -2,7 +2,7 @@
 
 set -e
 
-# @todo Echo what are we doing here 
+# Print start message for MariaDB initialization
 echo -e "\n\033[1;32m=== Initializing MariaDB Database ===\033[0m\n"
 
 # Ensure MariaDB runtime directory exists (required for MariaDB socket)
@@ -11,10 +11,11 @@ mkdir -p /run/mysqld
 chown -R mysql:mysql /run/mysqld
 chmod 755 /run/mysqld
 
+# Initialize the MariaDB data directory
 echo "Initializing MariaDB data directory..."
 mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
-# Start MariaDB daemon and wait until it's ready to accept connections
+# Start the MariaDB daemon
 echo "Starting MariaDB daemon..."
 mariadbd --user=mysql --datadir=/var/lib/mysql &
 
@@ -28,4 +29,5 @@ done
 echo "Setting MariaDB root password..."
 mariadb -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DATABASE_ROOT_PASSWORD}';"
 
+# Confirm completion
 echo -e "\n\033[1;32m=== MariaDB Initialization Complete ===\033[0m"

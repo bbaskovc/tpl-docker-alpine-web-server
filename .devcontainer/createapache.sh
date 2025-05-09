@@ -2,6 +2,7 @@
 
 set -e
 
+# Print start message for phpMyAdmin initialization
 echo -e "\n\033[1;32m=== Initializing phpMyAdmin ===\033[0m\n"
 
 PHPMYADMIN_TMP_DIR="/usr/share/webapps/phpmyadmin/tmp"
@@ -34,8 +35,10 @@ else
     echo "\$cfg['blowfish_secret'] = '${BLOWFISH_SECRET}';" >> "$PHPMYADMIN_CONFIG"
 fi
 
+# Confirm completion
 echo -e "\n\033[1;32m=== phpMyAdmin Initialization Complete ===\033[0m\n"
 
+# Print start message for Apache initialization
 echo -e "\n\033[1;32m=== Initializing Apache Server ===\033[0m\n"
 
 # Ensure Apache runtime directory exists (required for PID files, etc.)
@@ -124,4 +127,5 @@ php82 -m
 echo "List of loaded modules:"
 httpd -M
 
+# Confirm completion
 echo -e "\n\033[1;32m=== Apache Initialization Complete ===\033[0m\n"

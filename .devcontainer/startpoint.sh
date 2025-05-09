@@ -25,4 +25,5 @@ echo -e "\nList of Web Access Points:"
 echo -e "\n\033[1;34mApache:\033[0m       \033[1;36mhttp://localhost:${APACHE_HTTP_PORT}\033[0m or \033[1;36mhttps://localhost:${APACHE_HTTPS_PORT}\033[0m"
 echo -e "\033[1;34mphpMyAdmin:\033[0m   \033[1;36mhttp://localhost:${APACHE_HTTP_PORT}/phpmyadmin/\033[0m or \033[1;36mhttps://localhost:${APACHE_HTTPS_PORT}/phpmyadmin/\033[0m"
 
+# Confirm completion
 echo -e "\n\033[1;32m=== Services started ===\033[0m\n"

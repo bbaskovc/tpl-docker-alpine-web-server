@@ -13,9 +13,6 @@ ENV LANG=C.UTF-8
 # Install dependencies: Git, Node.js with npm, Apache, PHP 8.2, and Xdebug
 RUN apk update && apk add --no-cache \
     curl \
-    git \
-    nodejs \
-    npm \
     apache2 \
     apache2-ssl \
     php82 \
